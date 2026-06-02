@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IQ NMS</title>
+    <link rel="icon" type="image/png" href="Assets/Identiqa-Logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React 18 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- PropTypes (required by Recharts) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+
+    <!-- Recharts -->
+    <script src="https://cdn.jsdelivr.net/npm/recharts@2.8.0/umd/Recharts.js"></script>
+
+    <!-- Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        sidebar: 'hsl(222 47% 11%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 6px;
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+            }
+        }
+
+        .pulse-danger {
+            animation: pulse-ring 2s infinite;
+        }
+
+        /* Honeycomb Styles */
+        .honeycomb-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 20px;
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .hexagon-row {
+            display: flex;
+            gap: 4px;
+        }
+
+        .hexagon-row:nth-child(even) {
+            margin-left: 54px;
+        }
+
+        .hexagon {
+            width: 100px;
+            height: 115px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .hexagon:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+            z-index: 10;
+        }
+
+        .hexagon-up {
+            background-color: #10b981;
+            color: #fff;
+        }
+
+        .hexagon-down {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        .hexagon-unknown {
+            background-color: #94a3b8;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" src="utils.js" data-presets="env,react"></script>
+    <script type="text/babel" src="api.js" data-presets="env,react"></script>
+    <script type="text/babel" src="components.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Overview.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Problems.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Topology.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Hosts.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/HostDetails.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Logs.js" data-presets="env,react"></script>
+    <script type="text/babel" src="pages/Tickets.js" data-presets="env,react"></script>
+    <script type="text/babel" src="app.js" data-presets="env,react"></script>
+</body>
+
+</html>
